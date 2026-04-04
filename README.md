@@ -27,7 +27,7 @@ After cleaning and filtering, our dataset yielded **5,369 valid respondents**.
 
 **Understanding the Summary Statistics Codes:**
 The numeric values in the table above represent **categorical integer codes**, not raw continuous numbers (e.g., an Age of 2 does not mean 2 years old). Here is a quick reference for interpreting these values:
-*   **Age:** 1 = 12-17 years, 2 = 18-34, 3 = 35-49, 4 = 50-64, 5 = 65+. *(Notice the Minimum Age is 2: this confirms no one under 18 remains after removing the lowest-income bracket dependents!)*
+*   **Age:** 1 = 12-17 years, 2 = 18-34, 3 = 35-49, 4 = 50-64, 5 = 65+. *(Notice the Age range is strictly 2 through 4: youths under 18 and seniors 65+ typically lack valid "Working Status" reports and were therefore cleanly filtered out of this workforce-focused dataset!)*
 *   **Household Income:** 2 = \$20k-\$39.9k, 3 = \$40k-\$59.9k, 4 = \$60k-\$79.9k, 5 = \$80k+.
 *   **Perceived Health:** 1 = Excellent, 2 = Very Good, 3 = Good, 4 = Fair, 5 = Poor.
 *   **Education Level:** 1 = Less than secondary, 2 = High school grad, 3 = Post-secondary degree.
