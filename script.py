@@ -2,6 +2,7 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 COLUMN_MAPPING = {
     "GEN_01": "Perceived_Health",
@@ -130,6 +131,8 @@ def main():
     # 1 = No healthcare provider, 0 = Has healthcare provider
     df["No_Healthcare_Provider"] = (df["Regular_Healthcare_Provider"] == 5).astype(int)
 
+    os.makedirs("assets", exist_ok=True)
+
     # Visualization
     from sklearn.model_selection import train_test_split
     from sklearn.linear_model import LinearRegression
@@ -141,7 +144,7 @@ def main():
     plt.title("Probability of NO Healthcare Provider by Income")
     plt.xlabel("Household Income Category (2=$20k+, 5=$80k+)")
     plt.ylabel("Probability of Lacking a Provider")
-    plt.savefig("healthcare_vs_income_trend.png")
+    plt.savefig("assets/healthcare_vs_income_trend.png")
     plt.close()
 
     print("\nGenerating education trend plot...")
@@ -150,7 +153,7 @@ def main():
     plt.title("Probability of NO Healthcare Provider by Education Level")
     plt.xlabel("Education Level (1=Less than secondary, 3=Post-secondary)")
     plt.ylabel("Probability of Lacking a Provider")
-    plt.savefig("healthcare_vs_education_trend.png")
+    plt.savefig("assets/healthcare_vs_education_trend.png")
     plt.close()
 
     print("\nGenerating age/gender trend plot...")
@@ -160,7 +163,7 @@ def main():
     plt.title("Probability of NO Healthcare Provider by Age and Gender")
     plt.xlabel("Age Group (2=18-34, 3=35-49, 4=50-64)")
     plt.ylabel("Probability of Lacking a Provider")
-    plt.savefig("healthcare_vs_age_sex_trend.png")
+    plt.savefig("assets/healthcare_vs_age_sex_trend.png")
     plt.close()
 
     # 3. Regression Modeling (Linear Probability Model)
@@ -245,7 +248,7 @@ def main():
     plt.title("Feature Importance in Predicting Healthcare Access")
     plt.xlabel("Relative Importance (%)")
     plt.tight_layout()
-    plt.savefig("ml_feature_importance.png", bbox_inches="tight", pad_inches=0.3, facecolor='white', dpi=300)
+    plt.savefig("assets/ml_feature_importance.png", bbox_inches="tight", pad_inches=0.3, facecolor='white', dpi=300)
     plt.close()
 
     # Append continuous probability to Dataframe (using rf probabilities for target 1)
