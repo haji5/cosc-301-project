@@ -255,6 +255,10 @@ def main():
     df["Expected_No_Provider_Risk"] = rf_model.predict_proba(X_multi)[:, 1]
 
     # 5. Final Storage
+    # Drop the temporary 'Sex' column created for visualization and console outputs
+    if "Sex" in df.columns:
+        df = df.drop(columns=["Sex"])
+
     df = df.replace(VALUE_MAPPINGS)
     with sqlite3.connect("healthcare_data.db") as conn:
         df.to_sql("health_survey", conn, if_exists="replace", index=False)
