@@ -7,7 +7,7 @@ This analysis explores the Canadian Community Health Survey (2022) to determine 
 The original dataset was extensively cleaned. We dropped duplicates, filtered out invalid responses (e.g., "Refusal" or "Don't know"), and focused only on respondents who provided valid data across all relevant demographic categories (income, perceived health, age, education, and working status).
 
 ### The Anomaly: Dropping Bracket 1
-Initially, an anomaly was present in the lowest income bracket (Bracket 1, under $20,000). The data showed that respondents in this bracket had surprisingly high access to doctors. This is a common statistical artifact caused by dependents (like students or young adults living with parents) who report zero personal income but still benefit from their family's high-quality healthcare coverage. 
+Initially, an anomaly was present in the lowest income bracket (Bracket 1, under \$20,000). The data showed that respondents in this bracket had surprisingly high access to doctors. This is a common statistical artifact caused by dependents (like students or young adults living with parents) who report zero personal income but still benefit from their family's high-quality healthcare coverage. 
 
 By removing this "noise" (dropping Bracket 1) and focusing strictly on the independent adult brackets (Brackets 2 through 5), a clear and distinct trend emerges.
 
@@ -28,7 +28,7 @@ After cleaning and filtering, our dataset yielded **5,369 valid respondents**.
 **Understanding the Summary Statistics Codes:**
 The numeric values in the table above represent **categorical integer codes**, not raw continuous numbers (e.g., an Age of 2 does not mean 2 years old). Here is a quick reference for interpreting these values:
 *   **Age:** 1 = 12-17 years, 2 = 18-34, 3 = 35-49, 4 = 50-64, 5 = 65+. *(Notice the Minimum Age is 2: this confirms no one under 18 remains after removing the lowest-income bracket dependents!)*
-*   **Household Income:** 2 = $20k-$39.9k, 3 = $40k-$59.9k, 4 = $60k-$79.9k, 5 = $80k+.
+*   **Household Income:** 2 = \$20k-\$39.9k, 3 = \$40k-\$59.9k, 4 = \$60k-\$79.9k, 5 = \$80k+.
 *   **Perceived Health:** 1 = Excellent, 2 = Very Good, 3 = Good, 4 = Fair, 5 = Poor.
 *   **Education Level:** 1 = Less than secondary, 2 = High school grad, 3 = Post-secondary degree.
 *   **Working Status:** 1 = Full-time, 2 = Part-time.
@@ -43,17 +43,19 @@ When calculating the linear probability model on this data, two completely diffe
 The standard $R^2$ evaluates the data at an **individual level**. It asks: 
 > *"If I pick a random person from the street and I know their exact income bracket, can I perfectly guess whether they personally have a doctor?"*
 
-Because individual human lives are incredibly complex, the answer is no. A person making $80,000 might just refuse to seek medical care, while a person making $30,000 might have a strict medical routine. The individual $R^2$ is incredibly low because income alone does not strictly dictate *individual* medical habits.
+Because individual human lives are incredibly complex, the answer is no. A person making \$80,000 might just refuse to seek medical care, while a person making \$30,000 might have a strict medical routine. The individual $R^2$ is incredibly low because income alone does not strictly dictate *individual* medical habits.
 
 ### 2. Population Macro-Trend ($R^2$ = 0.9964)
 The Macro-Trend $R^2$ evaluates the data at a **population level**. It asks: 
 > *"As an entire population gets wealthier, does the average frequency of doctor access predictably improve?"*
 
 When we group the data by income to average out the individual "chaos" and view the macro-trend, a virtually undisputed pattern emerges:
-*   **Bracket 2 ($20k-$40k):** 30.11% chance of NO doctor
-*   **Bracket 3 ($40k-$60k):** 27.94% chance of NO doctor
-*   **Bracket 4 ($60k-$80k):** 25.77% chance of NO doctor
-*   **Bracket 5 ($80k+):** 23.61% chance of NO doctor
+*   **Bracket 2 (\$20k-\$40k):** 30.11% chance of NO doctor
+*   **Bracket 3 (\$40k-\$60k):** 27.94% chance of NO doctor
+*   **Bracket 4 (\$60k-\$80k):** 25.77% chance of NO doctor
+*   **Bracket 5 (\$80k+):** 23.61% chance of NO doctor
+
+![Healthcare vs Income Trend](healthcare_vs_income_trend.png)
 
 There is a brutally consistent **~2.2% drop in risk per income bracket increase**. Because this downward staircase is almost perfectly linear as wealth increases, the Macro-Trend $R^2$ achieves an incredibly high **0.9964**.
 
