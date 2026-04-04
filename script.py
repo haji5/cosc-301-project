@@ -200,37 +200,42 @@ def main():
     for idx, row in age_sex_grouped.iterrows():
         print(f"Age Group {idx[0]} | {idx[1]}: {row['mean']*100:.2f}% chance of NO doctor (n={int(row['count'])})")
 
-    # 4. Combined Multiple Regression Model
-    print("\n--- Combined Multiple Regression Model ---")
+    # 4. Machine Learning Classification Model
+    from sklearn.ensemble import RandomForestClassifier
+    from sklearn.metrics import accuracy_score, classification_report
+
+    print("\n--- Machine Learning Classification Model (Random Forest) ---")
     X_multi = df[["Household_Income", "Age", "Sex_at_Birth", "Education_Level"]]
     y_multi = df["No_Healthcare_Provider"]
     
     X_train_m, X_test_m, y_train_m, y_test_m = train_test_split(X_multi, y_multi, test_size=0.2, random_state=42)
-    multi_model = LinearRegression()
-    multi_model.fit(X_train_m, y_train_m)
-    y_pred_m = multi_model.predict(X_test_m)
-    
-    print("\nCombined Linear Probability Model Results:")
-    print(f"R-squared: {r2_score(y_test_m, y_pred_m):.4f}")
-    print(f"MSE: {mean_squared_error(y_test_m, y_pred_m):.4f}")
-    
-    factors = ["Household Income", "Age Bracket", "Sex (Female=2)", "Education Level"]
-    coefs = multi_model.coef_
-    for factor, coef in zip(factors, coefs):
-        print(f"Coefficient for {factor}: {coef:.4f} ({coef*100:.2f}% change in risk per unit)")
-        
-    print("\nGenerating combined model coefficient plot...")
+    rf_model = RandomForestClassifier(n_estimators=100, random_state=42, class_weight="balanced")
+    rf_model.fit(X_train_m, y_train_m)
+    y_pred_m = rf_model.predict(X_test_m)
+
+    print("\nModel Evaluation Metrics:")
+    print(f"Accuracy: {accuracy_score(y_test_m, y_pred_m):.4f}")
+    print("\nClassification Report:")
+    print(classification_report(y_test_m, y_pred_m, target_names=["Has Doctor (0)", "No Doctor (1)"]))
+
+    factors = ["Household Income", "Age Bracket", "Sex at Birth", "Education Level"]
+    importances = rf_model.feature_importances_
+
+    print("\nFeature Importances:")
+    for factor, imp in zip(factors, importances):
+        print(f"{factor}: {imp*100:.2f}%")
+
+    print("\nGenerating feature importance plot...")
     plt.figure(figsize=(9, 5))
-    sns.barplot(x=coefs * 100, y=factors, hue=factors, legend=False, palette="vlag")
-    plt.title("Impact on Risk of NOT Having a Doctor (Percentage Points)")
-    plt.xlabel("Change in Probability (%) per Unit Increase")
-    plt.axvline(0, color='black', linewidth=1)
+    sns.barplot(x=importances * 100, y=factors, hue=factors, legend=False, palette="viridis")
+    plt.title("Feature Importance in Predicting Healthcare Access")
+    plt.xlabel("Relative Importance (%)")
     plt.tight_layout()
-    plt.savefig("combined_model_coefficients.png", bbox_inches="tight", pad_inches=0.3, facecolor='white', dpi=300)
+    plt.savefig("ml_feature_importance.png", bbox_inches="tight", pad_inches=0.3, facecolor='white', dpi=300)
     plt.close()
 
-    # Append continuous probability to Dataframe
-    df["Expected_No_Provider_Risk"] = model.predict(X)
+    # Append continuous probability to Dataframe (using rf probabilities for target 1)
+    df["Expected_No_Provider_Risk"] = rf_model.predict_proba(X_multi)[:, 1]
 
     # 5. Final Storage
     df = df.replace(VALUE_MAPPINGS)

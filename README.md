@@ -87,19 +87,21 @@ Regardless of the age bracket, **females possess significantly wider access to p
 
 This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark.
 
-## Combined Risk Prediction Model
-To understand how these variables interact, we can regress **Household Income, Age, Sex, and Education** together against the risk of lacking a primary care provider. This Multiple Linear Probability Model reveals the independent weight (or "impact") of each socioeconomic factor when all other variables are held constant.
+## Machine Learning Classification Model
+In a Computer Science/Data Science context, attempting to predict a binary output (Has Doctor vs. No Doctor) is formally treated as a classification problem. Rather than using an econometric linear model, we can train a **Random Forest Classifier** to assess how well individual traits—Household Income, Age, Sex, and Education Level—can collectively predict whether someone lacks a primary care provider.
 
-When we combine the factors into a single predictive model, the resulting coefficients show how much a single "step up" in any demographic category reduces the percentage risk of being without a doctor:
+Because the underlying behavioral choices of individual human beings contain massive amounts of variance/noise, demographic traits alone cannot perfectly predict any single individual's healthcare status. Our Random Forest model trained on this subset achieved an **Accuracy of ~58%** and a weighted F1-score of ~0.60.
 
-*   **Income Increase (1 Bracket):** -2.11% risk
-*   **Education Increase (1 Step):** -2.51% risk
-*   **Age Increase (1 Bracket):** -3.80% risk
-*   **Sex (Identifying as Female):** -6.61% risk
+However, the major value of the Random Forest model is that it calculates **Feature Importances**, confirming precisely which demographic parameters the algorithm relied on most heavily to make its predictions:
 
-![Combined Risk Model Coefficients](combined_model_coefficients.png)
+*   **Household Income:** 32.94% Importance
+*   **Age Bracket:** 24.25% Importance
+*   **Education Level:** 22.72% Importance
+*   **Sex at Birth:** 20.09% Importance
 
-This combined view illustrates that while income is definitively protective (-2.1% per bracket), **Biological Sex (Female) and Age are the strongest individual predictors** for having established healthcare in this dataset. Females have a baseline 6.6% lower risk simply by demographic association, and every aging bracket naturally introduces nearly a 4% drop in risk as medical needs increase and infrastructure solidifies.
+![Machine Learning Feature Importance](ml_feature_importance.png)
+
+This ML analysis clearly illustrates that while variables like Age and Education are extremely valuable to the algorithm, **Household Income (wealth) acts as the most dominant feature (nearly 33%)** when mathematically dividing and predicting healthcare accessibility across the Canadian population.
 
 ## Conclusion
 The data tells a profound story about systemic healthcare inequality. While you cannot accurately predict a specific person's healthcare status based solely on their paycheck ($R^2$ = 0.0013), zooming out to a demographic level definitively proves that **wealth exerts a near-perfect linear pressure ($R^2$ = 0.9964) on a massive population's healthcare access.**
