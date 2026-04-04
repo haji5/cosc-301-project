@@ -226,7 +226,7 @@ def main():
     plt.xlabel("Change in Probability (%) per Unit Increase")
     plt.axvline(0, color='black', linewidth=1)
     plt.tight_layout()
-    plt.savefig("combined_model_coefficients.png", bbox_inches="tight")
+    plt.savefig("combined_model_coefficients.png", bbox_inches="tight", pad_inches=0.3, facecolor='white', dpi=300)
     plt.close()
 
     # Append continuous probability to Dataframe
