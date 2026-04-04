@@ -88,7 +88,7 @@ Regardless of the age bracket, **females possess significantly wider access to p
 This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark.
 
 ## Machine Learning Classification Model
-In a Computer Science/Data Science context, attempting to predict a binary output (Has Doctor vs. No Doctor) is formally treated as a classification problem. Rather than using an econometric linear model, we can train a **Random Forest Classifier** to assess how well individual traits—Household Income, Age, Sex, and Education Level—can collectively predict whether someone lacks a primary care provider.
+In a Computer Science/Data Science context, attempting to predict a binary output (Has Doctor vs. No Doctor) is formally treated as a classification problem. We can train a **Random Forest Classifier** to assess how well individual traits—Household Income, Age, Sex, and Education Level—can collectively predict whether someone lacks a primary care provider.
 
 Because the underlying behavioral choices of individual human beings contain massive amounts of variance/noise, demographic traits alone cannot perfectly predict any single individual's healthcare status. Our Random Forest model trained on this subset achieved an **Accuracy of ~58%** and a weighted F1-score of ~0.60.
 
