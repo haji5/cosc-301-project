@@ -221,11 +221,12 @@ def main():
         
     print("\nGenerating combined model coefficient plot...")
     plt.figure(figsize=(9, 5))
-    sns.barplot(x=coefs * 100, y=factors, palette="vlag")
+    sns.barplot(x=coefs * 100, y=factors, hue=factors, legend=False, palette="vlag")
     plt.title("Impact on Risk of NOT Having a Doctor (Percentage Points)")
     plt.xlabel("Change in Probability (%) per Unit Increase")
     plt.axvline(0, color='black', linewidth=1)
-    plt.savefig("combined_model_coefficients.png")
+    plt.tight_layout()
+    plt.savefig("combined_model_coefficients.png", bbox_inches="tight")
     plt.close()
 
     # Append continuous probability to Dataframe
