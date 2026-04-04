@@ -59,6 +59,21 @@ When we group the data by income to average out the individual "chaos" and view 
 
 There is a brutally consistent **~2.2% drop in risk per income bracket increase**. Because this downward staircase is almost perfectly linear as wealth increases, the Macro-Trend $R^2$ achieves an incredibly high **0.9964**.
 
+## How Do Education Levels Relate?
+A similar phenomenon occurs when we map access to primary care against an individual's **Education Level**. 
+
+When looking at the same cleaned dataset (Independent adults, Brackets 2-5), we discover another clear downward staircase in the risk of being without a doctor:
+
+*   **Education Level 1 (Less than secondary):** 30.6% chance of NO doctor (n=392)
+*   **Education Level 2 (High school graduation):** 28.2% chance of NO doctor (n=1552)
+*   **Education Level 3 (Post-secondary degree):** 24.7% chance of NO doctor (n=3425)
+
+![Healthcare vs Education Trend](healthcare_vs_education_trend.png)
+
+Just like Income, **Education Level acts as a protective factor**. Individuals who achieve a post-secondary degree decrease their risk of lacking a primary care doctor by nearly 6% compared to those who do not finish secondary school. 
+
+Because income and education are heavily intertwined in the real world, these two metrics compound on each other to establish deep systemic disparities in Canadian healthcare access.
+
 ## Conclusion
 The data tells a profound story about systemic healthcare inequality. While you cannot accurately predict a specific person's healthcare status based solely on their paycheck ($R^2$ = 0.0013), zooming out to a demographic level definitively proves that **wealth exerts a near-perfect linear pressure ($R^2$ = 0.9964) on a massive population's healthcare access.**
 

@@ -144,6 +144,15 @@ def main():
     plt.savefig("healthcare_vs_income_trend.png")
     plt.close()
 
+    print("\nGenerating education trend plot...")
+    plt.figure(figsize=(8, 5))
+    sns.pointplot(data=df, x="Education_Level", y="No_Healthcare_Provider", color="royalblue")
+    plt.title("Probability of NO Healthcare Provider by Education Level")
+    plt.xlabel("Education Level (1=Less than secondary, 3=Post-secondary)")
+    plt.ylabel("Probability of Lacking a Provider")
+    plt.savefig("healthcare_vs_education_trend.png")
+    plt.close()
+
     # 3. Regression Modeling (Linear Probability Model)
     X = df[["Household_Income"]]
     y = df["No_Healthcare_Provider"]
@@ -170,6 +179,11 @@ def main():
     for inc in range(2, 6):
         risk = model.predict(pd.DataFrame({"Household_Income": [inc]}))[0] * 100
         print(f"Income Bracket {inc}: {risk:.2f}% chance of NO doctor")
+
+    print("\nCalculated Risk of NOT Having a Doctor by Education Level:")
+    edu_grouped = df.groupby("Education_Level")["No_Healthcare_Provider"].agg(['mean', 'count'])
+    for idx, row in edu_grouped.iterrows():
+        print(f"Education Level {idx}: {row['mean']*100:.2f}% chance of NO doctor (n={int(row['count'])})")
 
     # Append continuous probability to Dataframe
     df["Expected_No_Provider_Risk"] = model.predict(X)
