@@ -184,6 +184,20 @@ def main():
     macro_model = LinearRegression().fit(X_macro, y_macro)
     print(f"\nMacro-Trend R-squared (Grouped Income Averages): {r2_score(y_macro, macro_model.predict(X_macro)):.4f}")
 
+    # Display Macro-Trend R-squared for Education
+    grouped_edu = df.groupby("Education_Level")["No_Healthcare_Provider"].mean().reset_index()
+    X_macro_edu = grouped_edu[["Education_Level"]]
+    y_macro_edu = grouped_edu["No_Healthcare_Provider"]
+    macro_model_edu = LinearRegression().fit(X_macro_edu, y_macro_edu)
+    print(f"\nMacro-Trend R-squared (Grouped Education Averages): {r2_score(y_macro_edu, macro_model_edu.predict(X_macro_edu)):.4f}")
+
+    # Display Macro-Trend R-squared for Age
+    grouped_age = df.groupby("Age")["No_Healthcare_Provider"].mean().reset_index()
+    X_macro_age = grouped_age[["Age"]]
+    y_macro_age = grouped_age["No_Healthcare_Provider"]
+    macro_model_age = LinearRegression().fit(X_macro_age, y_macro_age)
+    print(f"\nMacro-Trend R-squared (Grouped Age Averages): {r2_score(y_macro_age, macro_model_age.predict(X_macro_age)):.4f}")
+
     # Predict Risk
     print("\nCalculated Risk of NOT Having a Doctor:")
     for inc in range(2, 6):

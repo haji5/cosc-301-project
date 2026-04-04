@@ -70,7 +70,7 @@ When looking at the same cleaned dataset (Independent adults, Brackets 2-5), we 
 
 ![Healthcare vs Education Trend](healthcare_vs_education_trend.png)
 
-Just like Income, **Education Level acts as a protective factor**. Individuals who achieve a post-secondary degree decrease their risk of lacking a primary care doctor by nearly 6% compared to those who do not finish secondary school. 
+Just like Income, **Education Level acts as a protective factor**. Individuals who achieve a post-secondary degree decrease their risk of lacking a primary care doctor by nearly 6% compared to those who do not finish secondary school. This trend is remarkably linear at the population level, achieving a **Macro-Trend $R^2$ of 0.9885**.
 
 Because income and education are heavily intertwined in the real world, these two metrics compound on each other to establish deep systemic disparities in Canadian healthcare access.
 
@@ -85,7 +85,7 @@ Regardless of the age bracket, **females possess significantly wider access to p
 
 ![Healthcare vs Age and Gender Trend](healthcare_vs_age_sex_trend.png)
 
-This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark.
+This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark. When evaluating the general population regardless of gender, advancing age predictably and steadily correlates with better access, demonstrating a **Macro-Trend $R^2$ of 0.9863**.
 
 ## Machine Learning Classification Model
 In a Computer Science/Data Science context, attempting to predict a binary output (Has Doctor vs. No Doctor) is formally treated as a classification problem. We can train a **Random Forest Classifier** to assess how well individual traits—Household Income, Age, Sex, and Education Level—can collectively predict whether someone lacks a primary care provider.
