@@ -90,4 +90,6 @@ This data exposes a profound cultural and systemic healthcare habit. Young males
 ## Conclusion
 The data tells a profound story about systemic healthcare inequality. While you cannot accurately predict a specific person's healthcare status based solely on their paycheck ($R^2$ = 0.0013), zooming out to a demographic level definitively proves that **wealth exerts a near-perfect linear pressure ($R^2$ = 0.9964) on a massive population's healthcare access.**
 
-As household income goes up, the systemic risk of functioning without a primary care doctor predictably and consistently goes down.
+Beyond income, the analysis reveals that **education**, **age**, and **gender** all play critical roles in healthcare access. Higher education levels act as a protective factor, compounding with income to establish deep systemic disparities. Furthermore, females consistently maintain better access to primary care physicians than males across nearly all age groups, though this gap narrows significantly as individuals cross the 50-year mark.
+
+Ultimately, as household income and education levels go up, and as populations age, the systemic risk of functioning without a primary care doctor predictably and consistently goes down.
