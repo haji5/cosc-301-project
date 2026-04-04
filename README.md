@@ -87,6 +87,20 @@ Regardless of the age bracket, **females possess significantly wider access to p
 
 This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark.
 
+## Combined Risk Prediction Model
+To understand how these variables interact, we can regress **Household Income, Age, Sex, and Education** together against the risk of lacking a primary care provider. This Multiple Linear Probability Model reveals the independent weight (or "impact") of each socioeconomic factor when all other variables are held constant.
+
+When we combine the factors into a single predictive model, the resulting coefficients show how much a single "step up" in any demographic category reduces the percentage risk of being without a doctor:
+
+*   **Income Increase (1 Bracket):** -2.11% risk
+*   **Education Increase (1 Step):** -2.51% risk
+*   **Age Increase (1 Bracket):** -3.80% risk
+*   **Sex (Identifying as Female):** -6.61% risk
+
+![Combined Risk Model Coefficients](combined_model_coefficients.png)
+
+This combined view illustrates that while income is definitively protective (-2.1% per bracket), **Biological Sex (Female) and Age are the strongest individual predictors** for having established healthcare in this dataset. Females have a baseline 6.6% lower risk simply by demographic association, and every aging bracket naturally introduces nearly a 4% drop in risk as medical needs increase and infrastructure solidifies.
+
 ## Conclusion
 The data tells a profound story about systemic healthcare inequality. While you cannot accurately predict a specific person's healthcare status based solely on their paycheck ($R^2$ = 0.0013), zooming out to a demographic level definitively proves that **wealth exerts a near-perfect linear pressure ($R^2$ = 0.9964) on a massive population's healthcare access.**
 
