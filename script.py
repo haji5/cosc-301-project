@@ -153,6 +153,16 @@ def main():
     plt.savefig("healthcare_vs_education_trend.png")
     plt.close()
 
+    print("\nGenerating age/gender trend plot...")
+    plt.figure(figsize=(8, 5))
+    df["Sex"] = df["Sex_at_Birth"].map({1: "Male", 2: "Female"})
+    sns.pointplot(data=df, x="Age", y="No_Healthcare_Provider", hue="Sex", palette="Set1")
+    plt.title("Probability of NO Healthcare Provider by Age and Gender")
+    plt.xlabel("Age Group (2=18-34, 3=35-49, 4=50-64)")
+    plt.ylabel("Probability of Lacking a Provider")
+    plt.savefig("healthcare_vs_age_sex_trend.png")
+    plt.close()
+
     # 3. Regression Modeling (Linear Probability Model)
     X = df[["Household_Income"]]
     y = df["No_Healthcare_Provider"]
@@ -184,6 +194,11 @@ def main():
     edu_grouped = df.groupby("Education_Level")["No_Healthcare_Provider"].agg(['mean', 'count'])
     for idx, row in edu_grouped.iterrows():
         print(f"Education Level {idx}: {row['mean']*100:.2f}% chance of NO doctor (n={int(row['count'])})")
+
+    print("\nCalculated Risk of NOT Having a Doctor by Age & Gender:")
+    age_sex_grouped = df.groupby(["Age", "Sex"])["No_Healthcare_Provider"].agg(['mean', 'count'])
+    for idx, row in age_sex_grouped.iterrows():
+        print(f"Age Group {idx[0]} | {idx[1]}: {row['mean']*100:.2f}% chance of NO doctor (n={int(row['count'])})")
 
     # Append continuous probability to Dataframe
     df["Expected_No_Provider_Risk"] = model.predict(X)

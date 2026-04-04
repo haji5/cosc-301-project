@@ -74,6 +74,19 @@ Just like Income, **Education Level acts as a protective factor**. Individuals w
 
 Because income and education are heavily intertwined in the real world, these two metrics compound on each other to establish deep systemic disparities in Canadian healthcare access.
 
+## How Do Age and Gender Impact Access?
+Healthcare trends do not exist in a vacuum separated from biological demographics. Analyzing the same dataset grouped by Age Bracket and Sex at Birth reveals another dramatic discrepancy impacting provider access in Canada. 
+
+Regardless of the age bracket, **females possess significantly wider access to primary care physicians than males.** 
+
+*   **Age 18-34:** Males face a **35.3%** likelihood of being doctorless, while Females face **25.7%** (a 9.6% gap).
+*   **Age 35-49:** Males face a **30.9%** likelihood of being doctorless, while Females face **21.3%** (a 9.6% gap).
+*   **Age 50-64:** Males face a **24.3%** likelihood of being doctorless, while Females face **21.7%** (a 2.6% gap).
+
+![Healthcare vs Age and Gender Trend](healthcare_vs_age_sex_trend.png)
+
+This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark.
+
 ## Conclusion
 The data tells a profound story about systemic healthcare inequality. While you cannot accurately predict a specific person's healthcare status based solely on their paycheck ($R^2$ = 0.0013), zooming out to a demographic level definitively proves that **wealth exerts a near-perfect linear pressure ($R^2$ = 0.9964) on a massive population's healthcare access.**
 
