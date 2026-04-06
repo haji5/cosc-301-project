@@ -3,6 +3,10 @@
 *.userprefs
 *.usertasks
 
+## new
+__pycache__/
+*.pyc
+
 #Mono Project Files
 *.pidb
 *.resources
@@ -1236,3 +1240,5 @@ abstract.record*
 secring.*
 
 
+*.pyc
+__pycache__/
