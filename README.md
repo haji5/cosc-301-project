@@ -55,7 +55,7 @@ When we group the data by income to average out the individual "chaos" and view 
 *   **Bracket 4 (\$60k-\$80k):** 25.77% chance of NO doctor
 *   **Bracket 5 (\$80k+):** 23.61% chance of NO doctor
 
-![Healthcare vs Income Trend](assets/healthcare_vs_income_trend.png)
+![Healthcare vs Income Trend](outputs/figures/healthcare_vs_income_trend.png)
 
 There is a brutally consistent **~2.2% drop in risk per income bracket increase**. Because this downward staircase is almost perfectly linear as wealth increases, the Macro-Trend $R^2$ achieves an incredibly high **0.9964**.
 
@@ -68,7 +68,7 @@ When looking at the same cleaned dataset (Independent adults, Brackets 2-5), we 
 *   **Education Level 2 (High school graduation):** 28.2% chance of NO doctor (n=1552)
 *   **Education Level 3 (Post-secondary degree):** 24.7% chance of NO doctor (n=3425)
 
-![Healthcare vs Education Trend](assets/healthcare_vs_education_trend.png)
+![Healthcare vs Education Trend](outputs/figures/healthcare_vs_education_trend.png)
 
 Just like Income, **Education Level acts as a protective factor**. Individuals who achieve a post-secondary degree decrease their risk of lacking a primary care doctor by nearly 6% compared to those who do not finish secondary school. This trend is remarkably linear at the population level, achieving a **Macro-Trend $R^2$ of 0.9885**.
 
@@ -83,7 +83,7 @@ Regardless of the age bracket, **females possess significantly wider access to p
 *   **Age 35-49:** Males face a **30.9%** likelihood of being doctorless, while Females face **21.3%** (a 9.6% gap).
 *   **Age 50-64:** Males face a **24.3%** likelihood of being doctorless, while Females face **21.7%** (a 2.6% gap).
 
-![Healthcare vs Age and Gender Trend](assets/healthcare_vs_age_sex_trend.png)
+![Healthcare vs Age and Gender Trend](outputs/figures/healthcare_vs_age_sex_trend.png)
 
 This data exposes a profound cultural and systemic healthcare habit. Young males significantly trail young females in maintaining a designated family doctor or general practitioner. Interestingly, while both genders establish better medical infrastructure as they inevitably age, the medical gender gap finally begins closing only when individuals cross the 50-year mark. When evaluating the general population regardless of gender, advancing age predictably and steadily correlates with better access, demonstrating a **Macro-Trend $R^2$ of 0.9863**.
 
